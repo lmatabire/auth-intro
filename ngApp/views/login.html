@@ -1,0 +1,14 @@
+<form ng-submit='controller.login()'>
+  <div class=" col-md-6 col-md-offset-3">
+    <div class="form-group">
+      
+      <label for="eMail">Email</label>
+      <input type="text"id="eMail" class="form-control" ng-model='controller.user.email'/>
+
+      <label for="password">PassWord</label>
+      <input type="password"id="password" class="form-control" ng-model='controller.user.password'/>
+
+    <input type="submit" value="Login" class="btn btn-primary">
+  </div>
+
+</form>
