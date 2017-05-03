@@ -48,4 +48,31 @@ router.post('/register', (req, res) => {
   )
 });
 
+// get secret message method
+router.get('/message', verifyToken ,(req, res)=>{
+  try{
+    res.json({message: 'Secret Message shhhhh...'});
+  } catch(err) {
+    res.json(err);
+  }
+})
+// Method to veryfy token
+function  verifyToken(req, res, next){
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  if(token){
+    jwt.verify(token, 'SecretString', function(err, decoded){
+      if(err){
+        return res.json({success: false, message: 'Token authentication failed...'});
+      } else {
+        req.decoded = decoded;
+        next()
+      }
+    });
+  } else {
+    return res.status(403).send({
+      success: false,
+      message: 'No token provided ...'
+    });
+  }
+}
 export default router;

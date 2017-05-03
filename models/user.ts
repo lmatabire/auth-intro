@@ -44,7 +44,7 @@ userSchema.method('generateToken', function(){
       email: this.email
     },
     'SecretString' // secret pw hwen evaluating the token
-  )
-})
+  );
+});
 
 export default mongoose.model<User>('User', userSchema)

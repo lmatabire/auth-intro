@@ -14,7 +14,8 @@ passport.deserializeUser(function(obj, done){
   done(null, obj);
 });
 
-passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'}, function(email, password, done){
+passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},
+  function(email, password, done){
   User.findOne({email: email}, function(err, user){
   if(err){
     return done(err);
